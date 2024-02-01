@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <style type="text/css">
+        label {
+            display: inline-block;
+            width: 200px
+        }
+    </style>
     @include('admin.css')
 </head>
 
@@ -37,10 +43,60 @@
         <!-- partial -->
         @include('admin.navbar')
 
-        <div class="container-fluid page-body-wrapper">
+        <div class="container-fluid page-body-wrapper align-items-center">
 
 
-            <h1>Add Doctor</h1>
+
+            <div class="container " align="center" style="padding-top : 50px;">
+
+                @if (session()->has('message'))
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss='alert'>X</button>
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+
+                <form action="{{ url('upload_doctor') }}" method="POST" enctype="multipart/form-data"
+                    class="text-center align-items-center">
+                    @csrf
+                    @method('post')
+                    <div style="padding: 15px;">
+                        <label for="">Doctor Name</label>
+                        <input type="text" style="color: black" name="name" placeholder="Name"  required>
+                    </div>
+
+                    <div style="padding: 15px;">
+                        <label for="">Phone </label>
+                        <input type="number" style="color: black" name="phone" placeholder="Write A Number"  required>
+                    </div>
+
+                    <div style="padding: 15px;">
+                        <label for="">Specialty</label>
+                        <select style="color: black; width : 200px;" name="specialty" id=""  required>
+                            <option value="skin">--Select--</option>
+                            <option value="skin">Skin</option>
+                            <option value="heart">heart</option>
+                            <option value="eye">eye</option>
+                            <option value="nose">Nose</option>
+                        </select>
+                    </div>
+
+                    <div style="padding: 15px;">
+                        <label for="">Room No </label>
+                        <input type="text" style="color: black" name="room" placeholder="Write Room Number"  required>
+                    </div>
+
+                    <div style="padding: 15px;">
+                        <label for="">Doctor Image</label>
+                        <input type="file" name="file"  required>
+                    </div>
+
+                    <div style="padding: 15px;">
+
+                        <input type="submit" name="" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     @include('admin.script')
