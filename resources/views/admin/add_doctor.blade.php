@@ -25,20 +25,23 @@
                             <i class="mdi mdi-close text-white me-0"></i>
                         </button>
                     </div>
+
                 </div>
+
+
             </div>
+
         </div>
         <!-- partial:partials/_sidebar.html -->
         @include('admin.sidebar')
         <!-- partial -->
+        @include('admin.navbar')
+
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_navbar.html -->
-            @include('admin.navbar')
-            <!-- partial -->
-            @include('admin.body')
-            <!-- main-panel ends -->
+
+
+            <h1>Add Doctor</h1>
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
     @include('admin.script')
 </body>

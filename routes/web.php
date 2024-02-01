@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::middleware([
 ])->get('/dashboard', function(){
     return view('user.home');
 })->name('dashboard');
+
+
+Route::get('/add_doctor_view', [AdminController::class, 'addview']);
