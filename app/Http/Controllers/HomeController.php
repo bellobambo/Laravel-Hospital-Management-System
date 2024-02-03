@@ -30,16 +30,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        if(Auth::id()){
+        if (Auth::id()) {
             return redirect('home');
-        }else{
+        } else {
             $doctor = Doctor::all();
             return view('user.home', compact('doctor'));
 
         }
     }
 
-    public function appointment(Request $request){
+    public function appointment(Request $request)
+    {
 
         $data = new Appointment;
 
@@ -50,12 +51,34 @@ class HomeController extends Controller
         $data->message = $request->name;
         $data->doctor = $request->doctor;
         $data->status = 'In Progress';
-        if(Auth::id()){
+        if (Auth::id()) {
             $data->user_id = Auth::user()->id;
         }
 
         $data->save();
 
         return redirect()->back()->with('message', 'Appointment Successful');
+    }
+
+    public function myappointment()
+    {
+        if (Auth::id()) {
+            $user_id = Auth::user()->id;
+
+            $appoint = Appointment::where('user_id', $user_id)->get();
+
+            return view('user.my_appointment', compact('appoint'));
+        } else {
+            return redirect()->back();
+        }
+    }
+
+
+    public function cancel_appoint($id)
+    {
+        $data = Appointment::find($id);
+        $data->delete();
+
+        return redirect()->back();
     }
 }

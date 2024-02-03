@@ -42,6 +42,7 @@
         @include('admin.sidebar')
         <!-- partial -->
         @include('admin.navbar')
+      
 
         <div class="container-fluid page-body-wrapper align-items-center">
 
