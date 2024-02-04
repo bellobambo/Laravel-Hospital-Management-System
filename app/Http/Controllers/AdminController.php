@@ -45,23 +45,39 @@ class AdminController extends Controller
     {
 
         $data = Appointment::all();
-        return view('admin.showappointment' , compact('data'));
+        return view('admin.showappointment', compact('data'));
     }
 
-    public function approved($id){
-        $data=Appointment::find($id);
+    public function approved($id)
+    {
+        $data = Appointment::find($id);
 
         $data->status = 'Approved';
 
         $data->save();
-        return  redirect()->back();
+        return redirect()->back();
     }
-    public function canceled($id){
-        $data=Appointment::find($id);
+    public function canceled($id)
+    {
+        $data = Appointment::find($id);
 
         $data->status = 'Canceled';
 
         $data->save();
-        return  redirect()->back();
+        return redirect()->back();
+    }
+
+    public function showdoctor()
+    {
+        $data = Doctor::all();
+        return view('admin.showdoctor', compact('data'));
+    }
+    public function deletedoctor($id)
+    {
+        $data = Doctor::find($id);
+
+        $data->delete();
+
+        return redirect()->back();
     }
 }
