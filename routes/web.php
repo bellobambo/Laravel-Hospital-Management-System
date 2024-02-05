@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth' , 'verified');
 
 
 
