@@ -3,6 +3,7 @@
 
 <head>
 
+    <base href="/public" >
 
     <style type="text/css">
         label {
@@ -59,40 +60,37 @@
                     </div>
                 @endif
 
-                <form action="{{ url('upload_doctor') }}" method="POST" enctype="multipart/form-data"
+                <form action="{{ url('sendemail' , $data->id) }}" method="POST"
                     class="text-center align-items-center">
                     @csrf
                     @method('post')
                     <div style="padding: 15px;">
-                        <label for="">Doctor Name</label>
-                        <input type="text" style="color: black" name="name" placeholder="Name"  required>
+                        <label for="">Greeting</label>
+                        <input type="text" style="color: black" name="greeting" placeholder="Name"  required>
                     </div>
 
                     <div style="padding: 15px;">
-                        <label for="">Phone </label>
-                        <input type="number" style="color: black" name="phone" placeholder="Write A Number"  required>
+                        <label for="">Body </label>
+                        <input type="text" style="color: black" name="body" placeholder="Write A Number"  required>
+                    </div>
+
+
+                    <div style="padding: 15px;">
+                        <label for="">Action Text</label>
+                        <input type="text" style="color: black" name="actiontext" placeholder="Write Room Number"  required>
                     </div>
 
                     <div style="padding: 15px;">
-                        <label for="">Specialty</label>
-                        <select style="color: black; width : 200px;" name="specialty" id=""  required>
-                            <option value="skin">--Select--</option>
-                            <option value="skin">Skin</option>
-                            <option value="heart">heart</option>
-                            <option value="eye">eye</option>
-                            <option value="nose">Nose</option>
-                        </select>
+                        <label for="">Action Url</label>
+                        <input type="text" style="color: black" name="actionurl" placeholder="Action Url"  required>
                     </div>
 
                     <div style="padding: 15px;">
-                        <label for="">Room No </label>
-                        <input type="text" style="color: black" name="room" placeholder="Write Room Number"  required>
+                        <label for="">End Part</label>
+                        <input type="text" style="color: black" name="endpart" placeholder="End Part"  required>
                     </div>
 
-                    <div style="padding: 15px;">
-                        <label for="">Doctor Image</label>
-                        <input type="file" name="file"  required>
-                    </div>
+
 
                     <div style="padding: 15px;">
 
